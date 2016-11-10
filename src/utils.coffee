@@ -23,6 +23,8 @@ class Utils
     Utils.robot.logger.debug "Fetching: #{url}"
     fetch(url,options).then (response) ->
       if response.status >= 200 and response.status < 300
+        Utils.robot.logger.debug "fetched with status #{response.status}, response:"
+        Utils.robot.logger.debug response
         return response
       else
         error = new Error "#{response.statusText}: #{response.url.split("?")[0]}"
