@@ -1,4 +1,4 @@
-_ = require "underscore" 
+_ = require "underscore"
 
 Config = require "../config"
 Utils = require "../utils"
@@ -14,7 +14,9 @@ class User
     .catch (error) ->
       Utils.robot.logger.error error
       Utils.Stats.increment "jirabot.user.lookup.email.failed"
-      Utils.fetch("#{Config.jira.url}/rest/api/2/myself")
+      u = Utils.fetch("#{Config.jira.url}/rest/api/2/myself")
+      Utils.robot.logger.debug "fetched myself: #{{u}}"
+      u
 
   @withUsername: (username) ->
     Utils.fetch("#{Config.jira.url}/rest/api/2/user?username=#{username}")
