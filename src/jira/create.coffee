@@ -18,7 +18,7 @@ class Create
     assignee = null
     room = Utils.JiraBot.adapter.getRoomName msg
 
-    Utils.robot.logger.debug "Create: #{project}, #{type}, #{summary}, #{msg}, #{fields}, #{emit}"
+    Utils.robot.logger.debug "Create: #{project}, #{type}, #{summary}, #{JSON.stringify msg}, #{fields}, #{emit}"
 
     if msg.message.user.profile?.email?
       user = User.withEmail(msg.message.user.profile.email)
